@@ -45,6 +45,7 @@ use strict;
 use warnings;
 use Carp;
 #use CGI qw(-nosticky *ul *li escapeHTML);
+use utf8;
 use WeBWorK::CGI;
 use WeBWorK::File::Scoring qw/parse_scoring_file/;
 use Date::Format;
@@ -468,7 +469,7 @@ sub header {
 	my $self = shift;
 	my $r = $self->r;
 	
-	$r->content_type("text/html; charset=utf-8");
+	$r->content_type("text/html; charset=UTF-8");
 	$r->send_http_header unless MP2;
 	return MP2 ? Apache2::Const::OK : Apache::Constants::OK;
 }
@@ -725,7 +726,8 @@ sub links {
 				    print CGI::start_li();
 					print CGI::start_ul();
 					print CGI::start_li(); # $problemID
-					print &$makelink("${pfx}Problem", text=>$r->maketext("Problem [_1]", $problemID), urlpath_args=>{%args,setID=>$setID,problemID=>$problemID}, systemlink_args=>\%systemlink_args);					
+					#print &$makelink("${pfx}Problem", text=>$r->maketext("Problem [_1]", $problemID), urlpath_args=>{%args,setID=>$setID,problemID=>$problemID}, systemlink_args=>\%systemlink_args);					
+					print &$makelink("${pfx}Problem", text=>"Problème $problemID", urlpath_args=>{%args,setID=>$setID,problemID=>$problemID}, systemlink_args=>\%systemlink_args);
 					print CGI::end_li(); # end $problemID
 					print CGI::end_ul();
 				    print CGI::end_li();
@@ -810,7 +812,7 @@ sub links {
 				    print CGI::end_li();
 				}
 				
-				print CGI::li(&$makelink("${pfx}SetMaker", text=>$r->maketext("Library Browser"), urlpath_args=>{%args}, systemlink_args=>\%systemlink_args))
+				print CGI::li(&$makelink("${pfx}SetMaker", text=>"Choisir des problèmes", urlpath_args=>{%args}, systemlink_args=>\%systemlink_args))
 					if $ce->{showeditors}->{librarybrowser1};
 				print CGI::li(&$makelink("${pfx}SetMaker2", text=>$r->maketext("Library Browser 2"), urlpath_args=>{%args}, systemlink_args=>\%systemlink_args))
 					if $ce->{showeditors}->{librarybrowser2};

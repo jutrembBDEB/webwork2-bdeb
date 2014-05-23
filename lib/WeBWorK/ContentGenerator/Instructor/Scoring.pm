@@ -164,7 +164,7 @@ sub body {
 					CGI::td({},
 						CGI::checkbox({ -name=>'includeIndex',
 										-value=>1,
-										-label=>'Include Index',
+										-label=>$r->maketext('Include Index'),
 										-checked=>0,
 									   },
 						),
@@ -186,7 +186,7 @@ sub body {
 						#CGI::br(),
 						CGI::checkbox({ -name=>'recordSingleSetScores',
 										-value=>1,
-										-label=>'Record Scores for Single Sets',
+										-label=>$r->maketext('Record Scores for Single Sets'),
 										-checked=>0,
 									  },
 									 'Record Scores for Single Sets'
@@ -194,7 +194,7 @@ sub body {
 						CGI::br(),
 						CGI::checkbox({ -name=>'padFields',
 										-value=>1,
-										-label=>'Pad Fields',
+										-label=>$r->maketext('Pad Fields'),
 										-checked=>1,
 									  },
 									 'Pad Fields'
@@ -202,7 +202,7 @@ sub body {
 					),
 				),
 				CGI::Tr(CGI::td({colspan =>2,align=>'center'},
-					CGI::input({type=>'submit',value=>'Score selected set(s) and save to: ',name=>'score-sets'}),
+					CGI::input({type=>'submit', value=>$r->maketext('Score selected set(s) and save to:'), name=>'score-sets'}),
 					CGI::input({type=>'text', name=>'scoringFileName', size=>'40',value=>"$scoringFileName"})
 				)),
 			

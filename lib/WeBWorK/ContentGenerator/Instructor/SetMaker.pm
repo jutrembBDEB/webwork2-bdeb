@@ -657,9 +657,9 @@ sub browse_library_panel2adv {
 
 	my $count_line = WeBWorK::Utils::ListingDB::countDBListings($r);
 	if($count_line==0) {
-		$count_line = "There are no matching WeBWorK problems";
+		$count_line = $r->maketext("There are no matching WeBWorK problems");
 	} else {
-		$count_line = "There are $count_line matching WeBWorK problems";
+		$count_line = $r->maketext("There are [_1] matching WeBWorK problems", $count_line);
 	}
 
 	# Formatting level checkboxes by hand
@@ -810,7 +810,7 @@ sub make_top_row {
 																 ($browse_which eq "browse_$lib")? (-disabled=>1): ())
 			if (-d "$ce->{courseDirs}{templates}/$lib");
 	}
-	$libs = CGI::br()."or Problems from".$libs if $libs ne '';
+	$libs = CGI::br()."ou des problèmes de ".$libs if $libs ne '';
 
 	my $these_widths = "width: 24ex";
 
@@ -896,7 +896,7 @@ sub make_top_row {
 						 -value=>$r->maketext("Next page"));
 	}
 	if (scalar(@pg_files)) {
-		$show_hide_path_button = CGI::submit(-id=>"toggle_paths", -style=>"width:16ex",
+		$show_hide_path_button = CGI::submit(-id=>"toggle_paths", -style=>"width:22ex",
 		                         -value=>$r->maketext("Show all paths"),
 								 -id =>"toggle_paths",
 								 -onClick=>'return togglepaths()');
@@ -1035,7 +1035,7 @@ sub make_data_row {
         $mltstart,
 		CGI::div({-style=>"background-color: #FFFFFF; margin: 0px auto"},
 		    CGI::span({-style=>"text-align: left"},CGI::button(-name=>"add_me", 
-		      -value=>"Add",
+		      -value=>$r->maketext("Add"),
 			-title=>"Add problem to target set",
 		      -onClick=>"return addme(\"$sourceFileName\", \'one\')")),
 			"\n",CGI::span({-style=>"text-align: left; cursor: pointer"},CGI::span({id=>"filepath$cnt"},"Show path ...")),"\n",
@@ -1505,7 +1505,7 @@ sub pre_header_initialize {
 
 
 sub title {
-	return "Library Browser";
+	return "Choisir des problèmes";
 }
 
 # hide view options panel since it distracts from SetMaker's built-in view options
@@ -1657,15 +1657,15 @@ sub body {
 	my ($next_button, $prev_button) = ("", "");
 	if ($first_index > 0) {
 		$prev_button = CGI::submit(-name=>"prev_page", -style=>"width:15ex",
-						 -value=>"Previous page");
+						 -value=>$r->maketext("Previous page"));
 	}
 	if ((1+$last_index)<scalar(@pg_files)) {
 		$next_button = CGI::submit(-name=>"next_page", -style=>"width:15ex",
-						 -value=>"Next page");
+						 -value=>$r->maketext("Next page"));
 	}
 	if (scalar(@pg_files)>0) {
-		print CGI::p(CGI::span({-id=>'what_shown'}, CGI::span({-id=>'firstshown'}, $first_shown+1)."-".CGI::span({-id=>'lastshown'}, $last_shown+1))." of ".CGI::span({-id=>'totalshown'}, $total_probs).
-			" shown.", $prev_button, " ", $next_button,
+		print CGI::p(CGI::span({-id=>'what_shown'}, CGI::span({-id=>'firstshown'}, $first_shown+1)."-".CGI::span({-id=>'lastshown'}, $last_shown+1))." de ".CGI::span({-id=>'totalshown'}, $total_probs).
+			" affichés.", $prev_button, " ", $next_button,
 		);
 	}
 	#	 }

@@ -1,6 +1,6 @@
 ################################################################################
 # WeBWorK Online Homework Delivery System
-# Copyright © 2000-2012 The openWeBWorK Project, http://github.com/openwebwork
+# Copyright Â© 2000-2012 The openWeBWorK Project, http://github.com/openwebwork
 # $CVSHeader: webwork2/lib/WeBWorK/URLPath.pm,v 1.36 2008/04/29 19:27:34 sh002i Exp $
 # 
 # This program is free software; you can redistribute it and/or modify it under
@@ -525,6 +525,8 @@ our %pathTypes = (
 		produce => 'compare/',
 		display => 'WeBWorK::ContentGenerator::Instructor::Compare',
 	},
+	
+		
 	instructor_set_maker => {
 		name    => 'Library Browser',
 		parent  => 'instructor_tools',
