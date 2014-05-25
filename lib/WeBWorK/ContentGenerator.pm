@@ -622,11 +622,13 @@ sub links {
 	# experimental subroutine for generating links, to clean up the rest of the
 	# code. ignore for now. (this is a closure over $self.)
 	my $makelink = sub {
+		use utf8;
 		my ($module, %options) = @_;
 		
 		my $urlpath_args = $options{urlpath_args} || {};
 		my $systemlink_args = $options{systemlink_args} || {};
-		my $text = HTML::Entities::encode_entities($options{text});
+		#my $text = HTML::Entities::encode_entities($options{text});
+		my $text = HTML::Entities::encode_entities($options{text},"<>&");
 		my $active = $options{active};
 		my %target = ($options{target} ? (target => $options{target}) : ());
 		
@@ -812,8 +814,8 @@ sub links {
 				    print CGI::end_li();
 				}
 				
-				#print CGI::li(&$makelink("${pfx}SetMaker", text=>$r->maketext("Library Browser"), urlpath_args=>{%args}, systemlink_args=>\%systemlink_args))
-				print CGI::li(&$makelink("${pfx}SetMaker", text=>"Choisir des problèmes", urlpath_args=>{%args}, systemlink_args=>\%systemlink_args))
+				print CGI::li(&$makelink("${pfx}SetMaker", text=>$r->maketext("Library Browser"), urlpath_args=>{%args}, systemlink_args=>\%systemlink_args))
+				#print CGI::li(&$makelink("${pfx}SetMaker", text=>"Choisir des problèmes", urlpath_args=>{%args}, systemlink_args=>\%systemlink_args))
 					if $ce->{showeditors}->{librarybrowser1};
 				print CGI::li(&$makelink("${pfx}SetMaker2", text=>$r->maketext("Library Browser 2"), urlpath_args=>{%args}, systemlink_args=>\%systemlink_args))
 					if $ce->{showeditors}->{librarybrowser2};
