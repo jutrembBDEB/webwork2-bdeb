@@ -812,7 +812,8 @@ sub links {
 				    print CGI::end_li();
 				}
 				
-				print CGI::li(&$makelink("${pfx}SetMaker", text=>"Choisir des problèmes", urlpath_args=>{%args}, systemlink_args=>\%systemlink_args))
+				print CGI::li(&$makelink("${pfx}SetMaker", text=>$r->maketext("Library Browser 1"), urlpath_args=>{%args}, systemlink_args=>\%systemlink_args))
+				#print CGI::li(&$makelink("${pfx}SetMaker", text=>"Choisir des problèmes", urlpath_args=>{%args}, systemlink_args=>\%systemlink_args))
 					if $ce->{showeditors}->{librarybrowser1};
 				print CGI::li(&$makelink("${pfx}SetMaker2", text=>$r->maketext("Library Browser 2"), urlpath_args=>{%args}, systemlink_args=>\%systemlink_args))
 					if $ce->{showeditors}->{librarybrowser2};
