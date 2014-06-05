@@ -194,7 +194,7 @@ msgstr "Aperçu des réponses"
 msgid "Any changes made below will be reflected in the set for ALL students."
 msgstr ""
 "Les changements effectués ci-bas affecteront les devoirs de TOUS les "
-"étudiants"
+"étudiants."
 
 #
 #: ContentGenerator.pm:1481
@@ -425,6 +425,13 @@ msgstr "Modifier les problèmes"
 #: ContentGenerator/Instructor/ProblemSetList.pm:441
 msgid "Edit Set Data"
 msgstr "Modifier les données des devoirs"
+
+#
+#: ContentGenerator/Instructor/ProblemSetList2.pm:462
+msgid "Hide Hints"
+msgstr "Cacher les indices"
+
+
 
 #
 #: ContentGenerator/Instructor/UserList.pm:961
@@ -897,9 +904,15 @@ msgstr "Points partiels désactivés"
 
 #
 #: ContentGenerator/Instructor/ProblemSetList.pm:2523
-#: ContentGenerator/Instructor/ProblemSetList.pm:448
+#
 msgid "Reduced Credit Enabled"
 msgstr "Points partiels activés"
+
+#
+#
+#: ContentGenerator/Instructor/ProblemSetList2.pm:461
+msgid "Reduced Credit"
+msgstr "Points partiels"
 
 #
 #. ($beginReducedScoringPeriod)
@@ -1923,12 +1936,54 @@ msgid "will open on %1"
 msgstr "sera disponible le %1"
 
 #
+#. ($self->formatDateTime($set->open_date),sprintf("%.0f",$restriction),@restricted
+#: ContentGenerator/ProblemSets.pm:433
+msgid "will open on %1 if you score at least %2% on set %3"
+msgstr "sera disponible le %1 si vous obtenez au moins %2% dans le devoir %3"
+
+#
+#. ($self->formatDateTime($set->open_date),sprintf("%.0f",$restriction)
+#: ContentGenerator/ProblemSets.pm:435
+msgid "will open on %1 if you score at least %2% on sets"
+msgstr "sera disponible le %1 si vous obtenez au moins %2% dans les devoirs"
+
+#
+#. @restricted
+#: ContentGenerator/ProblemSets.pm:436
+msgid " and %1. "
+msgstr " et %1. "
+
+#
+#. $self->formatDateTime($set->open_date,undef,$ce->{studentDateDisplayFormat}),sprintf("%.0f",$restriction),@restricted
+#: ContentGenerator/ProblemSets.pm:455
+msgid ""
+"Opened on %1 and due %2. But you must score at least %3% on set %4 to open "
+"this set."
+msgstr ""
+"Disponible depuis %1 et doit être remis %2. Mais vous devez obtenir au moins "
+"%3% dans le devoir %4 pour accéder à ce devoir."
+
+#
+#. $self->formatDateTime($set->open_date,undef,$ce->{studentDateDisplayFormat}),sprintf("%.0f",$restriction)
+#: ContentGenerator/ProblemSets.pm:457
+msgid "Opened on %1 and due %2. But you must score at least %3% on sets"
+msgstr ""
+"Disponible depuis %1 et doit être remis %2. Mais vous devez obtenir au moins "
+"%3% dans les devoirs"
+
+#
+#
+#: ContentGenerator/ProblemSets.pm:462
+msgid " to open this test."
+msgstr " pour accéder à ce devoir."
+
+#
 #
 msgid "Add to which set?"
 msgstr "Ajouter à quel devoir?"
 
 #
-msgid "Course Information for course [_1]"
+msgid "Course Information for course %1"
 msgstr "Information sur le cours %1"
 
 #
@@ -2011,7 +2066,7 @@ msgstr ""
 
 # avant: msgstr "Les droit d'écriture n'ont pas été activés pour le répertoire templates. Aucune modification ne peut être effectuée."
 #
-msgid "Save [_1] and View"
+msgid "Save %1 and View"
 msgstr "Sauvegarder %1 et Afficher"
 
 #
@@ -2035,7 +2090,7 @@ msgid "Show in another window"
 msgstr "Afficher dans une autre fenêtre"
 
 #
-msgid "Copied auxiliary files from [_1] to new location at [_2]"
+msgid "Copied auxiliary files from %1 to new location at %2"
 msgstr "Les fichiers auxiliaires de %1 ont été copiés dans %2"
 
 # avant: msgstr "Les fichiers auxiliares de %1 ont été copiés dans %2"
@@ -2055,6 +2110,11 @@ msgstr "Courriel"
 #
 msgid "File Manager"
 msgstr "Gestionnaire de fichiers"
+
+#
+msgid "Set Detail for set $setID"
+msgstr "Informations pour le devoir $setID"
+
 
 #
 msgid "Unable to change the hardcopy header for set [_1]. Unknown error."
@@ -2109,7 +2169,7 @@ msgid "no action"
 msgstr "aucune action"
 
 #
-msgid "Added '[_1]' to [_2] as new set header"
+msgid "Added '%1' to %2 as new set header"
 msgstr "Ajout de '%1' à %2 en tant que nouvel entête"
 
 #
@@ -2198,7 +2258,7 @@ msgstr "Extraits de code PG illustrant des techniques spécifiques"
 
 # avant: msgstr "Bouts de code PG illustrant des techniques spécifiques"
 #
-msgid "Error copying [_1] to [_2]"
+msgid "Error copying %1 to %2"
 msgstr "Erreur lors de la copie de %1 vers %2"
 
 #
@@ -2206,7 +2266,7 @@ msgid "Hmwk Sets Editor"
 msgstr "Éditeur de devoirs"
 
 #
-msgid "This set is [_1] students."
+msgid "This set is %1 students."
 msgstr "Ce devoir est %1 pour les étudiants."
 
 #
@@ -2349,7 +2409,7 @@ msgstr ""
 
 # avant: msgstr "Tester des bouts de code PG dans un labo interactif. Une bonne façon d'apprendre le langage PG."
 #
-msgid "Page generated at [_1] at [_2]"
+msgid "Page generated at %1 at %2"
 msgstr "Page générée à %1 le %2"
 
 #
@@ -2444,7 +2504,7 @@ msgstr ""
 "processus d'enregistrement dans la base de données."
 
 #
-msgid "The hardcopy header for set [_1] has been renamed to '[_2]'."
+msgid "The hardcopy header for set %1 has been renamed to '%2'."
 msgstr "L'entête d'impression du devoir %1 a été renommé '%2'."
 
 #
@@ -2478,7 +2538,7 @@ msgstr ""
 "chemin de ce fichier par le biais de l'éditeur de devoirs."
 
 #
-msgid "The set header for set [_1] has been renamed to '[_2]'."
+msgid "The set header for set %1 has been renamed to '%2'."
 msgstr "L'entête pour le devoir %1 a été renommé par '%2'."
 
 # avant: msgstr "L'en-tête de devoir pour le devoir %1 a été renommé par '%2'."
@@ -2513,7 +2573,7 @@ msgstr "Le problème choisi (%1) n'est pas valide pour le devoir %2."
 
 # avant: msgstr "Le problème choisi (%1) n'est pas valide pour l'ensemble %2."
 #
-msgid "Editing [_1] in file '[_2]'"
+msgid "Editing %1 in file '%2'"
 msgstr "Modification de %1 du fichier '%2'"
 
 #
@@ -2568,7 +2628,7 @@ msgid "Course Administration"
 msgstr "Administration du cours"
 
 #
-msgid "Added [_1] to [_2] as problem [_3]"
+msgid "Added %1 to %2 as problem %3"
 msgstr "Le problème %1 a été ajouté à %2 en tant que problème %3"
 
 #
@@ -2647,7 +2707,7 @@ msgstr ""
 "bas pour l'enregistrer dans un autre fichier."
 
 #
-msgid "Error: The original file [_1] cannot be read."
+msgid "Error: The original file %1 cannot be read."
 msgstr "Erreur : Le fichier original %1 ne peut être lu."
 
 #
@@ -2688,7 +2748,7 @@ msgid "Show:"
 msgstr "Afficher : "
 
 #
-msgid "WeBWorK Assignment [_1] is due : [_2]."
+msgid "WeBWorK Assignment %1 is due : %2."
 msgstr "Date de remise du devoir %1 : %2"
 
 #
@@ -2786,7 +2846,7 @@ msgstr "Remise des réponses"
 
 #
 msgid "Answers Available"
-msgstr "Réponses disponible"
+msgstr "Réponses disponibles"
 
 #
 msgid "Visible to Students"
@@ -2813,18 +2873,21 @@ msgstr "Modifier"
 msgid "View it"
 msgstr "Voir"
 
-msgid ""
-"Any time problem numbers are intentionally changed, the problems will always "
-"be renumbered consecutively, starting from one. When deleting problems, gaps "
-"will be left in the numbering unless the box above is checked."
-msgstr ""
-"Si le numéro d'un problèmes est intentionnellement modifié, les problèmes "
-"seront renumérotés consécutivement, en commençant par un. Si un problème est "
-"supprimé, il manquera un numéro dans la série sauf si la case si-contre est "
-"cochée."
+msgid "Restrict release by set(s)"
+msgstr "Restreindre la disponibilité<br>par le(s) devoir(s)"
+
+
+msgid "Score required for release"
+msgstr "Condition de note requise"
+
+msgid "Hide Hints from Students"
+msgstr "Cacher les indices aux étudiants"
+
+msgid "Any time problem numbers are intentionally changed, the problems will always be renumbered consecutively, starting from one.  When deleting problems, gaps will be left in the numbering unless the box above is checked."
+msgstr "Si le numéro d'un problèmes est intentionnellement modifié, les problèmes seront renumérotés consécutivement, en commençant par un. Si un problème est supprimé, il manquera un numéro dans la série sauf si la case si-contre est cochée."
 
 msgid "blank problem template(s) to end of homework set"
-msgstr "Problème(s) modèle(s) vide(s) à la fin du devoir"
+msgstr " problème(s) vide(s) à la fin du devoir"
 
 msgid "(Any unsaved changes will be lost.)"
 msgstr "(Les modification non sauvegardées seront perdus)"
@@ -2835,11 +2898,8 @@ msgstr "Réordonner les problèmes seulement"
 msgid "Save Changes"
 msgstr "Sauvegarder les modifications"
 
-msgid ""
-"When changing problem numbers, we will move the problem to be %1 the chosen "
-"number."
-msgstr ""
-"Si le numéro du problème est changé, le problème sera %1 le numéro choisis"
+msgid "When changing problem numbers, we will move the problem to be %1 the chosen number."
+msgstr "Si le numéro du problème est changé, le problème sera %1 le numéro choisi"
 
 msgid "Delete it?"
 msgstr "Supprimer?"
@@ -3057,9 +3117,6 @@ msgstr ""
 msgid "Can't write to file %1"
 msgstr "Impossible d'écrire dans le fichier %1"
 
-msgid "Added %1 to %2 as problem %3"
-msgstr "Ajouté %1 à %2 en problème %3"
-
 msgid ""
 "Could not add %1 problems to this set. The number must be between 1 and %2"
 msgstr ""
@@ -3177,12 +3234,8 @@ msgstr ""
 msgid "This problem uses the same source file as number %1."
 msgstr "Ce problème utilise le même fichier source que le problème numéro %1."
 
-msgid ""
-"It is before the open date. You probably want to renumber the problems if "
-"you are deleting some from the middle."
-msgstr ""
-"C'est avant la date d'ouverture. Vous voulez probablement renuméroter les "
-"problèmes si vous en effacer quelques-uns dans le milieu."
+msgid "It is before the open date. You probably want to renumber the problems if you are deleting some from the middle."
+msgstr "C'est avant la date d'ouverture. Vous voulez probablement renuméroter les problèmes si vous en effacer quelques-uns dans le milieu."
 
 msgid "This set doesn't contain any problems yet."
 msgstr "Ce devoir ne contient pas encore de problème."
@@ -3219,21 +3272,11 @@ msgid "Last"
 msgstr "Nom de famille"
 
 #, fuzzy
-msgid ""
-"A period (.) indicates a problem has not been attempted, a \"C\" indicates a "
-"problem has been answered 100% correctly, and a number from 0 to 99 "
-"indicates the percentage of partial credit earned. The number on the second "
-"line gives the number of incorrect attempts.  "
-msgstr ""
-"A period (.) indicates a problem has not been attempted, a \"C\" indicates a "
-"problem has been answered 100% correctly, and a number from 0 to 99 "
-"indicates the percentage of partial credit earned. The number on the second "
-"line gives the number of incorrect attempts.  "
+msgid "A period (.) indicates a problem has not been attempted, a \"C\" indicates a problem has been answered 100% correctly, and a number from 0 to 99 indicates the percentage of partial credit earned. The number on the second line gives the number of incorrect attempts.  "
+msgstr "A period (.) indicates a problem has not been attempted, a \"C\" indicates a problem has been answered 100% correctly, and a number from 0 to 99 indicates the percentage of partial credit earned. The number on the second line gives the number of incorrect attempts.  "
 
 #, fuzzy
-msgid ""
-"Click on a student's name to see the student's version of the homework "
-"set.    Click heading to sort table."
+msgid "Click on a student's name to see the student's version of the homework set.    Click heading to sort table."
 msgstr ""
 "Click on a student's name to see the student's version of the homework "
 "set.    Click heading to sort table."
@@ -4088,7 +4131,7 @@ msgid "Automatic"
 msgstr "Automatique"
 
 msgid "Overwrite existing files silently"
-msgstr "Écraser les fichier existant en silence"
+msgstr "Écraser les fichiers existants en mode silencieux"
 
 msgid "Unpack archives automatically"
 msgstr "Décompresser les archives automatiquement"
@@ -4295,13 +4338,13 @@ msgstr "Ouvrir"
 # Stéphanie Lanthier <lanthier.stephanie@gmail.com>, Université du Québec à Montréal, 2011.
 #
 msgid "Merge file: "
-msgstr "Fichier de fusion"
+msgstr "Joindre le fichier"
 
 msgid "Reply-To: "
 msgstr "Répondre à: "
 
-msgid "Subject: "
-msgstr "Sujet: "
+msgid "Subject:  "
+msgstr "Sujet:"
 
 msgid "All students in course"
 msgstr "Tous les étudiants dans le cours"
@@ -4326,3 +4369,42 @@ msgstr "Éditeur de devoir(2)"
 
 msgid "Classlist Editor2"
 msgstr "Liste des utilisateurs(2)"
+
+
+#: ContentGenerator/Instructor.pm (584)
+msgid "no students"
+msgstr "aucun étudiants"
+
+#: ContentGenerator/Instructor.pm (584)
+msgid "all students"
+msgstr "tous les étudiants"
+
+#: ContentGenerator/Instructor.pm (584)
+msgid "1 student"
+msgstr "1 étudiant"
+
+#: $count, $numUsers
+# ContentGenerator/Instructor.pm (584)
+msgid "an impossible number of users: %1 out of %2"
+msgstr "un très grand nombre d'utilisateurs: %1 sur %2"
+
+#: $count, $numUsers
+# ContentGenerator/Instructor.pm (592)
+msgid "%1 students out of %2"
+msgstr "%1 étudiants sur %2"
+
+
+#: ContentGenerator/Instructor.pm (607)
+msgid "1 set"
+msgstr "1 devoir"
+
+#: $count, $numSets
+# ContentGenerator/Instructor.pm (609)
+msgid "an impossible number of sets: %1 out of %2"
+msgstr "un très grand nombre de devoirs: %1 sur %2"
+
+#: $count
+# ContentGenerator/Instructor.pm (611)
+msgid "%1 sets"
+msgstr "%1 devoirs"
+

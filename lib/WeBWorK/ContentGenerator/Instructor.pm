@@ -578,18 +578,19 @@ sub hiddenEditForUserFields {
 
 sub userCountMessage {
 	my ($self, $count, $numUsers) = @_;
+	my $r = $self->r;	
 	
 	my $message;
 	if ($count == 0) {
-		$message = CGI::em("no students");
+		$message = CGI::em($r->maketext("no students"));
 	} elsif ($count == $numUsers) {
-		$message = "all students";
+		$message = $r->maketext("all students");
 	} elsif ($count == 1) {
-		$message = "1 student";
+		$message = $r->maketext("1 student");
 	} elsif ($count > $numUsers || $count < 0) {
-		$message = CGI::em("an impossible number of users: $count out of $numUsers");
+		$message = CGI::em($r->maketext("an impossible number of users: [_1] out of [_2]", $count, $numUsers));
 	} else {
-		$message = "$count students out of $numUsers";
+		$message = $r->maketext("[_1] students out of [_2]", $count, $numUsers);
 	}
 	
 	return $message;
@@ -597,18 +598,19 @@ sub userCountMessage {
 
 sub setCountMessage {
 	my ($self, $count, $numSets) = @_;
+	my $r = $self->r;	
 	
 	my $message;
 	if ($count == 0) {
-		$message = CGI::em("no sets");
+		$message = CGI::em($r->maketext("no sets"));
 	} elsif ($count == $numSets) {
-		$message = "all sets";
+		$message = $r->maketext("all sets");
 	} elsif ($count == 1) {
-		$message = "1 set";
+		$message = $r->maketext("1 set");
 	} elsif ($count > $numSets || $count < 0) {
-		$message = CGI::em("an impossible number of sets: $count out of $numSets");
+		$message = CGI::em($r->maketext("an impossible number of sets: [_1] out of [_2]", $count, $numSets));
 	} else {
-		$message = "$count sets";
+		$message = $r->maketext("[_1] sets", $count);
 	}
 	
 	return $message;
