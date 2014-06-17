@@ -1838,7 +1838,7 @@ sub body {
 	my @headerFileList = listFilesRecursive(
 		$templates,
 		qr/header.*\.pg$/i, 		# match these files
-		qr/^(?:$skip|svn)$/, 	# prune these directories
+		qr/^(?:$skip|svn|git)$/, 	# prune these directories
 		0, 				# match against file name only
 		1, 				# prune against path relative to $templates
 	);

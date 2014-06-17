@@ -66,7 +66,7 @@ use constant LIB2_DATA => {
 my %problib;	## This is configured in defaults.conf
 my %ignoredir = (
 	'.' => 1, '..' => 1, 'Library' => 1, 'CVS' => 1, 'tmpEdit' => 1,
-	'headers' => 1, 'macros' => 1, 'email' => 1, '.svn' => 1,
+	'headers' => 1, 'macros' => 1, 'email' => 1, '.svn' => 1, '.git' => 1,
 );
 
 sub prepare_activity_entry {
