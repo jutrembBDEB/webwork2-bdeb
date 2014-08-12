@@ -2955,7 +2955,7 @@ msgid "The answer will be graded later."
 msgstr "La réponde va être corrigée plus tard."
 
 msgid "All of the %1 answers above are correct."
-msgstr "Tous les %1 réponses si-dessus sont correctes."
+msgstr "Toutes les %1 réponses ci-dessus sont correctes."
 
 msgid "font-visible"
 msgstr "font-visible"
@@ -4182,7 +4182,7 @@ msgstr ""
 
 msgid "There is no undo for deleting files or directories!"
 msgstr ""
-"L'annulation n'es pas possibler pour la suppression de fichiers ou de "
+"L'annulation n'est pas possible pour la suppression de fichiers ou de "
 "répertoires!"
 
 msgid "Really delete the items listed above?"
