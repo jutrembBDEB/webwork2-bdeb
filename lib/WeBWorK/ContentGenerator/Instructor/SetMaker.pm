@@ -810,7 +810,7 @@ sub make_top_row {
 																 ($browse_which eq "browse_$lib")? (-disabled=>1): ())
 			if (-d "$ce->{courseDirs}{templates}/$lib");
 	}
-	$libs = CGI::br()."ou des problèmes de ".$libs if $libs ne '';
+	$libs = CGI::br().$r->maketext("or Problems from").$libs if $libs ne '';
 
 	my $these_widths = "width: 24ex";
 
@@ -1505,7 +1505,7 @@ sub pre_header_initialize {
 
 
 sub title {
-	return "Choisir des problèmes";
+	return $self->r->maketext("Library Browser");
 }
 
 # hide view options panel since it distracts from SetMaker's built-in view options
@@ -1664,8 +1664,10 @@ sub body {
 						 -value=>$r->maketext("Next page"));
 	}
 	if (scalar(@pg_files)>0) {
-		print CGI::p(CGI::span({-id=>'what_shown'}, CGI::span({-id=>'firstshown'}, $first_shown+1)."-".CGI::span({-id=>'lastshown'}, $last_shown+1))." de ".CGI::span({-id=>'totalshown'}, $total_probs).
-			" affichés.", $prev_button, " ", $next_button,
+		print CGI::p(CGI::span({-id=>'what_shown'}, CGI::span({-id=>'firstshown'}, $first_shown+1)."-".CGI::span({-id=>'lastshown'}, $last_shown+1)).$r->maketext(" of ").CGI::span({-id=>'totalshown'}, $total_probs).
+			$r->maketext(" shown."), $prev_button, " ", $next_button,
+#		print CGI::p(CGI::span({-id=>'what_shown'}, CGI::span({-id=>'firstshown'}, $first_shown+1)."-".CGI::span({-id=>'lastshown'}, $last_shown+1))." of ".CGI::span({-id=>'totalshown'}, $total_probs).
+	#		" shown.", $prev_button, " ", $next_button,
 		);
 	}
 	#	 }

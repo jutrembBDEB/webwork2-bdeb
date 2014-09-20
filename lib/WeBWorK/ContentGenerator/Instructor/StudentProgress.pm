@@ -79,10 +79,10 @@ sub title {
 	my $type                = $self->{type};
 	my $string              = $r->maketext("Student Progress for")." ".$self->{ce}->{courseName}." ";
 	if ($type eq 'student') {
-		$string             .= "student ".$self->{studentName};
+		$string             .= $r->maketext("student")." ".$self->{studentName};
 	} elsif ($type eq 'set' ) {
 		$string             .= $r->maketext("set")." ".$self->{setName};
-		$string             .= ".&nbsp;&nbsp;&nbsp; Due ". $self->formatDateTime($self->{set_due_date});
+		$string             .= ".&nbsp;&nbsp;&nbsp; ".$r->maketext("Due")." ". $self->formatDateTime($self->{set_due_date});
 	}
 	return $string;
 }
@@ -150,8 +150,8 @@ sub body {
 		my $email = $studentRecord->email_address;
 		
 		print CGI::a({-href=>"mailto:$email"}, $email), CGI::br(),
-			"Section: ", $studentRecord->section, CGI::br(),
-			"Recitation: ", $studentRecord->recitation, CGI::br();
+			$r->maketext("Section").": ", $studentRecord->section, CGI::br(),
+			$r->maketext("Recitation").": ", $studentRecord->recitation, CGI::br();
 		
 		if ($authz->hasPermissions($user, "become_student")) {
 			my $act_as_student_url = $self->systemLink($courseHomePage,
@@ -862,11 +862,11 @@ sub displaySets {
 #		if ( $showColumns{ 'index' } );
 	    push( @columnHdrs, $r->maketext("Problems").CGI::br().$problem_header )
 		if ( $showColumns{ 'problems' } );
-	    push( @columnHdrs, CGI::a({"href"=>$self->systemLink($setStatsPage,params=>{primary_sort=>'section', %params})},$r->maketext("Section")) )
+	    push( @columnHdrs, CGI::a({"href"=>$self->systemLink($setStatsPage,params=>{primary_sort=>'section', %params})},'Section') )
 		if ( $showColumns{ 'section' } );
-	    push( @columnHdrs, CGI::a({"href"=>$self->systemLink($setStatsPage,params=>{primary_sort=>'recitation', %params})},$r->maketext("Recitation")) )
+	    push( @columnHdrs, CGI::a({"href"=>$self->systemLink($setStatsPage,params=>{primary_sort=>'recitation', %params})},'Recitation') )
 		if ( $showColumns{ 'recit' } );
-	    push( @columnHdrs, CGI::a({"href"=>$self->systemLink($setStatsPage,params=>{primary_sort=>'user_id', %params})},$r->maketext("Login Name")) )
+	    push( @columnHdrs, CGI::a({"href"=>$self->systemLink($setStatsPage,params=>{primary_sort=>'user_id', %params})},'Login Name') )
 		if ( $showColumns{ 'login' } );
 
 	    print CGI::start_table({-class=>"progress-table", -border=>5,style=>'font-size:smaller'}),
