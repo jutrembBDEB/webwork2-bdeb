@@ -1505,6 +1505,7 @@ sub pre_header_initialize {
 
 
 sub title {
+	my ($self) = @_;
 	return $self->r->maketext("Library Browser");
 }
 
