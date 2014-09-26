@@ -191,7 +191,7 @@ sub index {
 	                                                      statType => 'set',
 	                                                      setID    => $set
 	    );
-		push @setLinks, CGI::a({-href=>$self->systemLink($setStatisticsPage) }, WeBWorK::ContentGenerator::underscore2sp($set));
+		push @setLinks, CGI::a({-href=>$self->systemLink($setStatisticsPage) }, WeBWorK::ContentGenerator::underscore2nbsp($set));
 	}
 	
 	foreach my $student (@studentList) {
