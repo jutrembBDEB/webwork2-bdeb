@@ -1691,7 +1691,7 @@ sub feedbackMacro_email {
 		$result .= CGI::hidden($key, $value) . "\n";
 	}
 	$result .= CGI::p(CGI::submit(-name=>"feedbackForm", -value=>$feedbackName));
-	$result .= CGI::endform() . "\n";
+	$result .= CGI::end_form() . "\n";
 	
 	return $result;
 }
@@ -1720,7 +1720,7 @@ sub feedbackMacro_form {
 		}
 	}
 	$result .= CGI::p({-align=>"left"}, CGI::submit(-name=>"feedbackForm", -value=>$feedbackName));
-	$result .= CGI::endform() . "\n";
+	$result .= CGI::end_form() . "\n";
 	
 	return $result;
 }
@@ -2074,6 +2074,19 @@ sub underscore2nbsp {
 	my ($str) = @_;
 	return unless defined $str;
 	$str =~ s/_/&nbsp;/g;
+	return $str;
+}
+
+=item underscore2sp($string)
+
+A copy of $string is returned with each underscore character replaced by a space entity.
+
+=cut
+
+sub underscore2sp {
+	my ($str) = @_;
+	return unless defined $str;
+	$str =~ s/_/ /g;
 	return $str;
 }
 

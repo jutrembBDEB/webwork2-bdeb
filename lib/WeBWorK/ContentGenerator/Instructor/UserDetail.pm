@@ -31,8 +31,8 @@ use WeBWorK::Utils qw(sortByName);
 use WeBWorK::Debug;
 
 use constant DATE_FIELDS => {   open_date    => " Open: ",
-	                            due_date     => " Due&nbsp;: ",
-	                            answer_date  => " Ans&nbsp;: "
+                                   due_date     => " Due&nbsp;: ",
+                                   answer_date  => " Ans&nbsp;: "
 };
 use constant DATE_FIELDS_ORDER =>[qw(open_date due_date answer_date )];
 sub initialize {

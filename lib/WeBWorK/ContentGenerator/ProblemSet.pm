@@ -120,6 +120,17 @@ sub nav {
 	return $self->navMacro($args, $tail, @links);
 }
 
+sub title {
+	my ($self) = @_;
+	my $r = $self->r;
+	# using the url arguments won't break if the set/problem are invalid
+	my $setID = WeBWorK::ContentGenerator::underscore2nbsp($self->r->urlpath->arg("setID"));
+
+	return $setID;
+
+
+}
+
 sub siblings {
 	my ($self) = @_;
 	my $r = $self->r;
@@ -409,7 +420,7 @@ sub body {
 	#	CGI::p({-align=>"left"},
 	#		CGI::submit(-name=>"feedbackForm", -label=>"Email instructor")
 	#	),
-	#	CGI::endform(),"\n";
+	#	CGI::end_form(),"\n";
 	
 	print CGI::start_div({-class=>"problem_set_options"});
 	print $self->feedbackMacro(

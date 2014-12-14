@@ -83,7 +83,7 @@ sub body {
 	my $showAnswersURL    = $self->systemLink($showAnswersPage,authen => 0 );
 	my $renderAnswers = 0;
 	# Figure out if MathJax is available
-	if (('MathJax' ~~ @{$ce->{pg}->{displayModes}})) {
+	if ((grep(/MathJax/,@{$ce->{pg}->{displayModes}}))) {
 	    print CGI::start_script({type=>"text/javascript", src=>"$ce->{webworkURLs}->{MathJax}"}), CGI::end_script();
 	    $renderAnswers = 1;
 	}
@@ -177,8 +177,7 @@ sub body {
 		
 	    }
 
-	    return CGI::span({class=>'ResultsWithError'}, $r->maketext('No users have sets matching the given set id.'))
-	    unless @setNames;
+	    next unless @setNames;
 
 	    foreach my $setName (@setNames) {
 	
